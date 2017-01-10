@@ -272,7 +272,7 @@ func calculateToken(counter []byte, digits int, h hash.Hash) string {
 
 // URL returns a suitable URL, such as for the Google Authenticator app
 // example: otpauth://totp/Example:alice@google.com?secret=JBSWY3DPEHPK3PXP&issuer=Example
-func (otp *Totp) url() (string, error) {
+func (otp *Totp) Url() (string, error) {
 
 	// verify the proper initialization
 	if err := totpHasBeenInitialized(otp); err != nil {
@@ -313,7 +313,7 @@ func (otp *Totp) url() (string, error) {
 func (otp *Totp) QR() ([]byte, error) {
 
 	// get the URL
-	u, err := otp.url()
+	u, err := otp.Url()
 
 	// check for errors during initialization
 	// this is already done on the URL method
